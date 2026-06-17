@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<samplemap ID="KadabraGrandSampleMap1" RRGroupAmount="1" MicPositions=""
+<samplemap ID="KadabraGrandSampleMap1" RRGroupAmount="1.0" MicPositions=";"
            CrossfadeGamma="1.0" SaveMode="2">
   <sample Root="21" LoKey="21" HiKey="21" LoVel="1" HiVel="32" RRGroup="1"
           FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_001_V1.wav"
@@ -1314,19 +1314,15 @@
           FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_082_V4.wav"
           Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="170836"
           MonolithOffset="137314304" MonolithLength="172032" SampleRate="44100.0"/>
-  <sample Root="103" LoKey="103" HiKey="103" LoVel="1" HiVel="32" RRGroup="1"
+  <sample Root="103" LoKey="103" HiKey="103" LoVel="1" HiVel="42" RRGroup="1"
           FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_083_V1.wav"
           Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="104738"
           MonolithOffset="137486336" MonolithLength="106496" SampleRate="44100.0"/>
-  <sample Root="103" LoKey="103" HiKey="103" LoVel="33" HiVel="64" RRGroup="1"
+  <sample Root="103" LoKey="103" HiKey="103" LoVel="43" HiVel="84" RRGroup="1"
           FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_083_V2.wav"
           Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="165375"
           MonolithOffset="137592832" MonolithLength="167936" SampleRate="44100.0"/>
-  <sample Root="103" LoKey="103" HiKey="103" LoVel="65" HiVel="96" RRGroup="1"
-          FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_083_V3.wav"
-          Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="137812"
-          MonolithOffset="137760768" MonolithLength="139264" SampleRate="44100.0"/>
-  <sample Root="103" LoKey="103" HiKey="103" LoVel="97" HiVel="127" RRGroup="1"
+  <sample Root="103" LoKey="103" HiKey="103" LoVel="85" HiVel="127" RRGroup="1"
           FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_083_V4.wav"
           Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="137813"
           MonolithOffset="137900032" MonolithLength="139264" SampleRate="44100.0"/>
@@ -1394,52 +1390,4 @@
           FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_087_V4.wav"
           Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="88075"
           MonolithOffset="139153408" MonolithLength="90112" SampleRate="44100.0"/>
-  <sample Root="108" LoKey="108" HiKey="108" LoVel="1" HiVel="32" RRGroup="1"
-          FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_088_V1.wav"
-          Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="22050"
-          MonolithOffset="139243520" MonolithLength="24576" SampleRate="44100.0"/>
-  <sample Root="108" LoKey="108" HiKey="108" LoVel="33" HiVel="64" RRGroup="1"
-          FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_088_V2.wav"
-          Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="77175"
-          MonolithOffset="139268096" MonolithLength="77824" SampleRate="44100.0"/>
-  <sample Root="108" LoKey="108" HiKey="108" LoVel="65" HiVel="96" RRGroup="1"
-          FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_088_V3.wav"
-          Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="110250"
-          MonolithOffset="139345920" MonolithLength="110592" SampleRate="44100.0"/>
-  <sample Root="108" LoKey="108" HiKey="108" LoVel="97" HiVel="127" RRGroup="1"
-          FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_088_V4.wav"
-          Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="121275"
-          MonolithOffset="139456512" MonolithLength="122880" SampleRate="44100.0"/>
-  <sample Root="109" LoKey="109" HiKey="109" LoVel="1" HiVel="32" RRGroup="1"
-          FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_089_V1.wav"
-          Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="22050"
-          MonolithOffset="139579392" MonolithLength="24576" SampleRate="44100.0"/>
-  <sample Root="109" LoKey="109" HiKey="109" LoVel="33" HiVel="64" RRGroup="1"
-          FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_089_V2.wav"
-          Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="49613"
-          MonolithOffset="139603968" MonolithLength="53248" SampleRate="44100.0"/>
-  <sample Root="109" LoKey="109" HiKey="109" LoVel="65" HiVel="96" RRGroup="1"
-          FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_089_V3.wav"
-          Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="82549"
-          MonolithOffset="139657216" MonolithLength="86016" SampleRate="44100.0"/>
-  <sample Root="109" LoKey="109" HiKey="109" LoVel="97" HiVel="127" RRGroup="1"
-          FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_089_V4.wav"
-          Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="82566"
-          MonolithOffset="139743232" MonolithLength="86016" SampleRate="44100.0"/>
-  <sample Root="110" LoKey="110" HiKey="110" LoVel="1" HiVel="32" RRGroup="1"
-          FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_090_V1.wav"
-          Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="33075"
-          MonolithOffset="139829248" MonolithLength="36864" SampleRate="44100.0"/>
-  <sample Root="110" LoKey="110" HiKey="110" LoVel="33" HiVel="64" RRGroup="1"
-          FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_090_V2.wav"
-          Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="49535"
-          MonolithOffset="139866112" MonolithLength="53248" SampleRate="44100.0"/>
-  <sample Root="110" LoKey="110" HiKey="110" LoVel="65" HiVel="96" RRGroup="1"
-          FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_090_V3.wav"
-          Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="60638"
-          MonolithOffset="139919360" MonolithLength="61440" SampleRate="44100.0"/>
-  <sample Root="110" LoKey="110" HiKey="110" LoVel="97" HiVel="127" RRGroup="1"
-          FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_090_V4.wav"
-          Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="88075"
-          MonolithOffset="139980800" MonolithLength="90112" SampleRate="44100.0"/>
 </samplemap>

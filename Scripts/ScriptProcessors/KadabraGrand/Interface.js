@@ -18,11 +18,11 @@ const var brightnessBroadcaster = Engine.createBroadcaster({
   "args": ["component", "value"],
   "tags": []
 });
-// Delay Mix Broadcaster
 brightnessBroadcaster.attachToComponentValue(["Brightness"], "");
 brightnessBroadcaster.addComponentPropertyListener(["brightnessValue"], ["text"], "BrightnessValue", function(index, component, value){
 	return Math.round(value * 10) / 10 + "dB";
 });
+// Delay Mix Broadcaster
 const var delayMixBroadcaster = Engine.createBroadcaster({
   "id": "delayMixBroadcaster",
   "args": ["component", "value"],
@@ -33,13 +33,15 @@ delayMixBroadcaster.addComponentPropertyListener(["delayMixValue"], ["text"], "D
 	return Math.round(value * 100) + "%";
 });
 // tempoNames array for TempoSync knobs
+// 19 entries (indices 0-18); HISE_USE_EXTENDED_TEMPO_VALUES=1, no offset needed
 const var tempoNames = ["1/1","1/2D","1/2","1/2T","1/4D","1/4","1/4T",
                         "1/8D","1/8","1/8T","1/16D","1/16","1/16T",
                         "1/32D","1/32","1/32T","1/64D","1/64","1/64T"];
-const var phaserTempoNames = ["8/1","6/1","4/1","3/1","2/1",
-                              "1/1","1/2D","1/2","1/2T","1/4D","1/4","1/4T",
+// 19 entries matching the actual HISE extended tempo table (index 0 = "1/1")
+// Large multi-bar divisions (8/1–2/1) are not in the HISE table; extend here if needed
+const var phaserTempoNames = ["1/1","1/2D","1/2","1/2T","1/4D","1/4","1/4T",
                               "1/8D","1/8","1/8T","1/16D","1/16","1/16T",
-                              "1/32D","1/32","1/32T"];
+                              "1/32D","1/32","1/32T","1/64D","1/64","1/64T"];
 
 // Reverb Mix Broadcaster
 const var reverbMixBroadcaster = Engine.createBroadcaster({
@@ -108,7 +110,7 @@ phaserDepthBroadcaster.addComponentPropertyListener(["phaserDepthValue"], ["text
 const var PhaserRateKnob = Content.getComponent("Phaser Rate");
 const var Phaser1LFO = Synth.getModulator("LFO Modulator1");
 
-// Apply tempo-table offset so knob index 0 = "4/1", index 21 = "1/64T"
+// LFO Frequency attribute is 0-based; knob index 0 = "1/1", index 18 = "1/64T"
 inline function onPhaserRateControl(component, value)
 {
     Phaser1LFO.setAttribute(Phaser1LFO.getAttributeIndex("Frequency"), value);
@@ -130,7 +132,7 @@ phaserRateBroadcaster.addComponentPropertyListener(
     {
         var idx = Math.round(value);
         if (idx < 0) idx = 0;
-        if (idx > 20) idx = 20;
+        if (idx > 18) idx = 18;
         return phaserTempoNames[idx];
     }
 );
@@ -181,17 +183,22 @@ const var DelayTimeKnob = Content.getComponent("Delay Time");
 const var DelayFeedbackKnob = Content.getComponent("Delay Feedback");
 const var DelaySyncMode = Content.getComponent("delaySyncMode");
 const var Delay1 = Synth.getEffect("Delay1");
-const var SYNC_OFFSET = 5; // HISE_USE_EXTENDED_TEMPO_VALUES adds 5 slow values before "1/1";
+
+// Per-mode memory — defaults apply on first load; DAW recall overwrites via callbacks
+reg lastFreeValue = 400;
+reg lastSyncValue = 8;
 
 // L/R mirror: Delay Time
 inline function onDelayTimeControl(component, value)
 {
-    local sendValue = value;
-    if (DelaySyncMode.getValue() == 1) // Sync mode — offset into extended tempo table
-        sendValue = value + SYNC_OFFSET;
-    
-    Delay1.setAttribute(0, sendValue); // DelayTimeLeft
-    Delay1.setAttribute(1, sendValue); // DelayTimeRight
+    // Track the value per-mode so mode toggles can restore it later
+    if (DelaySyncMode.getValue() == 1)
+        lastSyncValue = value;
+    else
+        lastFreeValue = value;
+
+    Delay1.setAttribute(0, value); // DelayTimeLeft
+    Delay1.setAttribute(1, value); // DelayTimeRight
 }
 DelayTimeKnob.setControlCallback(onDelayTimeControl);
 
@@ -215,7 +222,8 @@ inline function onDelaySyncModeControl(component, value)
         DelayTimeKnob.set("max", 18);
         DelayTimeKnob.set("middlePosition", 9);   // linear across divisions
         DelayTimeKnob.set("stepSize", 1);
-        DelayTimeKnob.setValue(8); // default 1/8
+        DelayTimeKnob.set("defaultValue", 8);     // double-click reset target
+        DelayTimeKnob.setValue(lastSyncValue);    // restore last sync value
     }
     else // Free mode
     {
@@ -223,16 +231,14 @@ inline function onDelaySyncModeControl(component, value)
         DelayTimeKnob.set("max", 2500);
         DelayTimeKnob.set("middlePosition", 500); // 50% → 500 ms
         DelayTimeKnob.set("stepSize", 1);
-        DelayTimeKnob.setValue(400); // default 400ms
+        DelayTimeKnob.set("defaultValue", 400);   // double-click reset target
+        DelayTimeKnob.setValue(lastFreeValue);    // restore last free value
     }
     
     // push the new value through so audio updates immediately
-local pushValue = DelayTimeKnob.getValue();
-if (value == 1) // Sync mode
-    pushValue = pushValue + SYNC_OFFSET;
-
-Delay1.setAttribute(0, pushValue);
-Delay1.setAttribute(1, pushValue);
+    local pushValue = DelayTimeKnob.getValue();
+    Delay1.setAttribute(0, pushValue);
+    Delay1.setAttribute(1, pushValue);
 }
 DelaySyncMode.setControlCallback(onDelaySyncModeControl);
 
@@ -243,6 +249,8 @@ if (DelaySyncMode.getValue() == 1)
     DelayTimeKnob.set("max", 18);
     DelayTimeKnob.set("middlePosition", 9);
     DelayTimeKnob.set("stepSize", 1);
+    DelayTimeKnob.set("defaultValue", 8);
+    DelayTimeKnob.setValue(lastSyncValue);
 }
 else
 {
@@ -250,7 +258,14 @@ else
     DelayTimeKnob.set("max", 2500);
     DelayTimeKnob.set("middlePosition", 500);
     DelayTimeKnob.set("stepSize", 1);
+    DelayTimeKnob.set("defaultValue", 400);
+    DelayTimeKnob.setValue(lastFreeValue);
 }
+
+// push the initial value through so audio matches the UI on load
+local initValue = DelayTimeKnob.getValue();
+Delay1.setAttribute(0, initValue);
+Delay1.setAttribute(1, initValue);
 
 // Delay Feedback label broadcaster
 const var delayFeedbackBroadcaster = Engine.createBroadcaster({
@@ -430,33 +445,45 @@ inline function setupSampleFolder()
     else if (os == "WIN") linkFileName = "LinkWindows";
     else linkFileName = "LinkLinux";
     
-    // Get app data folder (Application Support/IMI/Kadabra Electronic Drumkit)
+    // Get app data folder (Application Support/IMI/Kadabra Grand)
     local appData = FileSystem.getFolder(FileSystem.AppData);
     local linkFile = appData.getChildFile(linkFileName);
     
     // Build expected standard samples path for this user
     local userHome = FileSystem.getFolder(FileSystem.UserHome);
     local standardSamples = userHome.getChildFile(
-    "Music/IMI/INSTRUMENT_NAME/Samples"
-);
+        "Music/IMI/Kadabra Grand/Samples"
+    );
     
     // If samples exist in standard location, write/overwrite link file
     if (isDefined(standardSamples) && standardSamples.isDirectory())
     {
         linkFile.writeString(standardSamples.toString(standardSamples.FullPath));
-        Console.print("Sample folder linked: " + 
-            standardSamples.toString(standardSamples.FullPath));
-    }
-    else
-    {
-        // Not found — HISE's built-in dialog will appear as fallback
-        Console.print("Samples not found in standard location.");
     }
 }
 
 setupSampleFolder();
 
 function onNoteOn()
+{
+	
+}
+function onNoteOff()
+{
+	
+}
+function onController()
+{
+	
+}
+function onTimer()
+{
+	
+}
+function onControl(number, value)
+{
+	
+}function onNoteOn()
 {
 	
 }
