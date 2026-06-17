@@ -92,14 +92,14 @@
                  numStrips="128.0" scaleFactor="0.2800000011920929" height="86"
                  width="86" isPluginParameter="1"/>
       <Component type="ScriptLabel" id="phaserDepthValue" x="515" y="182" parentComponent="pnlMain"
-                 width="50" height="18" text="0%" textColour="4288387995" bgColour="4278190080"/>
+                 width="50" height="18" text="39%" textColour="4288387995" bgColour="4278190080"/>
       <Component type="ScriptSlider" id="Phaser Rate" x="497" y="220" mode="TempoSync"
                  max="20.0" stepSize="1.0" middlePosition="9.0" parentComponent="pnlMain"
                  filmstripImage="{PROJECT_FOLDER}final-71.png" numStrips="128.0"
                  scaleFactor="0.2800000011920929" width="80" height="80" pluginParameterName="Phaser Rate"
                  isPluginParameter="1"/>
       <Component type="ScriptLabel" id="phaserRateValue" x="515" y="302" width="50"
-                 height="18" parentComponent="pnlMain" text="1/1" textColour="4288387995"
+                 height="18" parentComponent="pnlMain" text="8/1" textColour="4288387995"
                  bgColour="4278190080"/>
       <Component type="ScriptLabel" id="outputGainValue" x="755" y="382" width="35"
                  height="18" parentComponent="pnlMain" text="-6.0dB" textColour="4288387995"

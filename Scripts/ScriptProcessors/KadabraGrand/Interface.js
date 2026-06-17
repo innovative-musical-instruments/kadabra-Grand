@@ -33,15 +33,13 @@ delayMixBroadcaster.addComponentPropertyListener(["delayMixValue"], ["text"], "D
 	return Math.round(value * 100) + "%";
 });
 // tempoNames array for TempoSync knobs
-// 19 entries (indices 0-18); HISE_USE_EXTENDED_TEMPO_VALUES=1, no offset needed
 const var tempoNames = ["1/1","1/2D","1/2","1/2T","1/4D","1/4","1/4T",
                         "1/8D","1/8","1/8T","1/16D","1/16","1/16T",
                         "1/32D","1/32","1/32T","1/64D","1/64","1/64T"];
-// 19 entries matching the actual HISE extended tempo table (index 0 = "1/1")
-// Large multi-bar divisions (8/1–2/1) are not in the HISE table; extend here if needed
-const var phaserTempoNames = ["1/1","1/2D","1/2","1/2T","1/4D","1/4","1/4T",
+const var phaserTempoNames = ["8/1","6/1","4/1","3/1","2/1",
+                              "1/1","1/2D","1/2","1/2T","1/4D","1/4","1/4T",
                               "1/8D","1/8","1/8T","1/16D","1/16","1/16T",
-                              "1/32D","1/32","1/32T","1/64D","1/64","1/64T"];
+                              "1/32D","1/32","1/32T"];
 
 // Reverb Mix Broadcaster
 const var reverbMixBroadcaster = Engine.createBroadcaster({
@@ -110,7 +108,7 @@ phaserDepthBroadcaster.addComponentPropertyListener(["phaserDepthValue"], ["text
 const var PhaserRateKnob = Content.getComponent("Phaser Rate");
 const var Phaser1LFO = Synth.getModulator("LFO Modulator1");
 
-// LFO Frequency attribute is 0-based; knob index 0 = "1/1", index 18 = "1/64T"
+// Apply tempo-table offset so knob index 0 = "8/1", index 20 = "1/64T"
 inline function onPhaserRateControl(component, value)
 {
     Phaser1LFO.setAttribute(Phaser1LFO.getAttributeIndex("Frequency"), value);
@@ -132,7 +130,7 @@ phaserRateBroadcaster.addComponentPropertyListener(
     {
         var idx = Math.round(value);
         if (idx < 0) idx = 0;
-        if (idx > 18) idx = 18;
+        if (idx > 20) idx = 20;
         return phaserTempoNames[idx];
     }
 );
