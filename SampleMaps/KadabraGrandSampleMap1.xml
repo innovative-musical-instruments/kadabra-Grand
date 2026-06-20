@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <samplemap ID="KadabraGrandSampleMap1" RRGroupAmount="1.0" MicPositions=";"
-           CrossfadeGamma="1.0" SaveMode="2">
+           CrossfadeGamma="1.0" SaveMode="1">
   <sample Root="21" LoKey="21" HiKey="21" LoVel="1" HiVel="32" RRGroup="1"
           FileName="{PROJECT_FOLDER}KadabraGrand/KadabraGrand_001_V1.wav"
           Normalized="0" NormalizedPeak="0.0" Duplicate="0" SampleEnd="538284"

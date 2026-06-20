@@ -13,7 +13,7 @@
                  numStrips="128.0" scaleFactor="0.2800000011920929" height="80"
                  width="80" itemColour="989855744" isPluginParameter="1"/>
       <Component type="ScriptLabel" id="saturationValue" x="97" y="180" parentComponent="pnlMain"
-                 width="50" height="18" text="41%" editable="0" processorId="KDED_GoodGUI1"
+                 width="50" height="18" text="0%" editable="0" processorId="KDED_GoodGUI1"
                  textColour="4288387995" bgColour="4278190080"/>
       <Component type="ScriptSlider" id="Brightness" x="80" y="220" useUndoManager="1"
                  tooltip="Brightness" macroControl="No MacroControl" pluginParameterName="Brightness"
@@ -23,7 +23,7 @@
                  numStrips="128.0" scaleFactor="0.2800000011920929" width="80"
                  height="80" isPluginParameter="1"/>
       <Component type="ScriptLabel" id="brightnessValue" x="97" y="302" width="50"
-                 height="18" text="-18.0dB" processorId="KDED_GoodGUI1" parentComponent="pnlMain"
+                 height="18" text="0.0dB" processorId="KDED_GoodGUI1" parentComponent="pnlMain"
                  textColour="4288387995" bgColour="4278190080"/>
       <Component type="ScriptSlider" id="Delay Mix" x="190" y="100" tooltip="Delay Mix"
                  macroControl="No MacroControl" pluginParameterName="Delay Mix"
@@ -37,14 +37,12 @@
                  height="19" parentComponent="pnlMain" text="Sync" numStrips="1.0"
                  isPluginParameter="1" pluginParameterName="Delay Sync Mode"/>
       <Component type="ScriptSlider" id="Delay Time" x="170" y="220" stepSize="1"
-                 max="2500" macroControl="No MacroControl" middlePosition="500"
-                 parentComponent="pnlMain" filmstripImage="{PROJECT_FOLDER}final-71.png"
-                 numStrips="128.0" scaleFactor="0.2000000029802322" width="60"
-                 height="60" isPluginParameter="1" defaultValue="400.0" min="1"
-                 pluginParameterName="Delay Time"/>
+                 max="18" macroControl="No MacroControl" middlePosition="9" parentComponent="pnlMain"
+                 filmstripImage="{PROJECT_FOLDER}final-71.png" numStrips="128.0"
+                 scaleFactor="0.2000000029802322" width="60" height="60" isPluginParameter="1"
+                 defaultValue="8.0" pluginParameterName="Delay Time"/>
       <Component type="ScriptLabel" id="delayTimeValue" x="180" y="282" parentComponent="pnlMain"
-                 width="40" height="18" text="1051 ms" textColour="4288387995"
-                 bgColour="4278190080"/>
+                 width="40" height="18" text="1/8" textColour="4288387995" bgColour="4278190080"/>
       <Component type="ScriptSlider" id="Delay Feedback" x="235" y="220" width="60"
                  height="60" parentComponent="pnlMain" filmstripImage="{PROJECT_FOLDER}final-71.png"
                  scaleFactor="0.2000000029802322" numStrips="128.0" isPluginParameter="1"
@@ -84,7 +82,7 @@
                  filmstripImage="{PROJECT_FOLDER}final-71.png" scaleFactor="0.2800000011920929"
                  width="80" height="80" numStrips="128.0" defaultValue="1.0" isPluginParameter="1"/>
       <Component type="ScriptLabel" id="filterResValue" x="418" y="302" parentComponent="pnlMain"
-                 width="50" height="18" text="1.1Q" textColour="4288387995" bgColour="4278190080"/>
+                 width="50" height="18" text="1.0Q" textColour="4288387995" bgColour="4278190080"/>
       <Component type="ScriptSlider" id="Phaser Depth" x="497" y="100" macroControl="No MacroControl"
                  pluginParameterName="Phaser Depth" processorId="Phase FX1" parameterId="Mix"
                  middlePosition="0.5" useUndoManager="1" tooltip="Phaser Depth"
@@ -92,7 +90,7 @@
                  numStrips="128.0" scaleFactor="0.2800000011920929" height="86"
                  width="86" isPluginParameter="1"/>
       <Component type="ScriptLabel" id="phaserDepthValue" x="515" y="182" parentComponent="pnlMain"
-                 width="50" height="18" text="39%" textColour="4288387995" bgColour="4278190080"/>
+                 width="50" height="18" text="0%" textColour="4288387995" bgColour="4278190080"/>
       <Component type="ScriptSlider" id="Phaser Rate" x="497" y="220" mode="TempoSync"
                  max="20.0" stepSize="1.0" middlePosition="9.0" parentComponent="pnlMain"
                  filmstripImage="{PROJECT_FOLDER}final-71.png" numStrips="128.0"
@@ -119,7 +117,7 @@
       <Component type="ScriptPanel" id="aboutPanel" x="72" y="50" text="" width="670"
                  height="290" parentComponent="pnlMain" bgColour="4278190080"
                  opaque="1" itemColour="4026531840" itemColour2="4029821490" borderRadius="8.0"
-                 borderSize="10.0" visible="0.0">
+                 borderSize="10.0" visible="0">
         <Component type="ScriptImage" id="aboutImage" x="0" y="0" width="670" height="290"
                    parentComponent="aboutPanel" fileName="{PROJECT_FOLDER}KSMP About Box1.0_Grand.png"/>
         <Component type="ScriptButton" id="linkKsamplers" x="10" y="178" width="400"
@@ -155,6 +153,12 @@
                  suffix=" dB" middlePosition="-18.0" numStrips="256.0" filmstripImage="{PROJECT_FOLDER}Kadabra_Output_Fader_filmstrip256f.png"
                  processorId="Simple Gain" parameterId="Gain" defaultValue="-6.0"
                  isPluginParameter="1"/>
+      <Component type="ScriptSlider" id="delayFreeMemory" x="0" y="0" width="100"
+                 height="100" parentComponent="pnlMain" visible="0" min="1.0"
+                 max="2500.0" defaultValue="400.0"/>
+      <Component type="ScriptSlider" id="delaySyncMemory" x="0" y="0" width="100"
+                 height="100" parentComponent="pnlMain" visible="0" max="18.0"
+                 defaultValue="8.0"/>
     </Component>
   </Component>
   <Component type="ScriptFloatingTile" id="presetsManager" x="72" y="50" ContentType="PresetBrowser"

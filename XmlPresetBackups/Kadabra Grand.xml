@@ -9,25 +9,27 @@
         <Processor Type="ScriptProcessor" ID="Interface" Bypassed="0">
           <ChildProcessors/>
           <Content>
-            <Control type="ScriptSlider" id="Saturation" value="0.4099999964237213"/>
-            <Control type="ScriptSlider" id="Brightness" value="-18.0"/>
+            <Control type="ScriptSlider" id="Saturation" value="0.0"/>
+            <Control type="ScriptSlider" id="Brightness" value="2.682209014892578e-7"/>
             <Control type="ScriptSlider" id="Delay Mix" value="0.0"/>
-            <Control type="ScriptButton" id="delaySyncMode" value="0.0"/>
-            <Control type="ScriptSlider" id="Delay Time" value="1051.0"/>
+            <Control type="ScriptButton" id="delaySyncMode" value="1.0"/>
+            <Control type="ScriptSlider" id="Delay Time" value="8.0"/>
             <Control type="ScriptSlider" id="Delay Feedback" value="0.0"/>
             <Control type="ScriptSlider" id="Reverb Mix" value="0.0"/>
             <Control type="ScriptSlider" id="Reverb Time" value="0.75"/>
             <Control type="ScriptSlider" id="Fliter Freq" value="20000.0"/>
-            <Control type="ScriptSlider" id="Filter Res" value="1.100000023841858"/>
-            <Control type="ScriptSlider" id="Phaser Depth" value="0.3899999856948853"/>
+            <Control type="ScriptSlider" id="Filter Res" value="1.0"/>
+            <Control type="ScriptSlider" id="Phaser Depth" value="0.0"/>
             <Control type="ScriptSlider" id="Phaser Rate" value="0.0"/>
             <Control type="ScriptButton" id="linkKsamplers" value="0.0"/>
             <Control type="ScriptButton" id="linkKadabra" value="0.0"/>
             <Control type="ScriptButton" id="linkTribalTools" value="0.0"/>
             <Control type="ScriptButton" id="linkGithub" value="0.0"/>
-            <Control type="ScriptButton" id="aboutButton" value="0.0"/>
+            <Control type="ScriptButton" id="aboutButton" value="0"/>
             <Control type="ScriptButton" id="presetsButton" value="0.0"/>
             <Control type="ScriptSlider" id="Output Gain" value="-5.999998569488525"/>
+            <Control type="ScriptSlider" id="delayFreeMemory" value="400.0"/>
+            <Control type="ScriptSlider" id="delaySyncMemory" value="8.0"/>
           </Content>
           <UIData Source="Kadabra GrandUIData"/>
         </Processor>
@@ -42,8 +44,7 @@
     <Processor Type="EffectChain" ID="FX" Bypassed="0">
       <ChildProcessors>
         <Processor Type="PolyphonicFilter" ID="FilterOut" Bypassed="0" Gain="0.0"
-                   Frequency="20000.0" Q="1.100000023841858" Mode="8.0" Quality="512.0"
-                   BipolarIntensity="0.0">
+                   Frequency="20000.0" Q="1.0" Mode="8.0" Quality="512.0" BipolarIntensity="0.0">
           <ChildProcessors>
             <Processor Type="ModulatorChain" ID="Frequency Modulation" Bypassed="0"
                        Intensity="1.0">
@@ -62,7 +63,7 @@
           </ChildProcessors>
           <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
         </Processor>
-        <Processor Type="PolyphonicFilter" ID="Brightness" Bypassed="0" Gain="-18.0"
+        <Processor Type="PolyphonicFilter" ID="Brightness" Bypassed="0" Gain="2.682209014892578e-7"
                    Frequency="4504.78662109375" Q="0.4182196259498596" Mode="3.0"
                    Quality="512.0" BipolarIntensity="0.0">
           <ChildProcessors>
@@ -130,7 +131,7 @@
         </Processor>
         <Processor Type="EffectChain" ID="FX" Bypassed="0">
           <ChildProcessors>
-            <Processor Type="Saturator" ID="Saturator1" Bypassed="0" Saturation="0.4099999964237213"
+            <Processor Type="Saturator" ID="Saturator1" Bypassed="0" Saturation="0.0"
                        WetAmount="1.0" PreGain="0.0" PostGain="0.0">
               <ChildProcessors>
                 <Processor Type="ModulatorChain" ID="Saturation Modulation" Bypassed="0"
@@ -140,9 +141,9 @@
               </ChildProcessors>
               <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
             </Processor>
-            <Processor Type="Delay" ID="Delay1" Bypassed="0" DelayTimeLeft="1051.0"
-                       DelayTimeRight="1051.0" FeedbackLeft="0.0" FeedbackRight="0.0"
-                       LowPassFreq="20000.0" HiPassFreq="40.0" Mix="0.0" TempoSync="0.0">
+            <Processor Type="Delay" ID="Delay1" Bypassed="0" DelayTimeLeft="13.0" DelayTimeRight="13.0"
+                       FeedbackLeft="0.0" FeedbackRight="0.0" LowPassFreq="20000.0"
+                       HiPassFreq="40.0" Mix="0.0" TempoSync="1.0">
               <ChildProcessors/>
               <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
             </Processor>
@@ -153,7 +154,7 @@
               <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
             </Processor>
             <Processor Type="PhaseFX" ID="Phase FX1" Bypassed="0" Frequency1="320.0"
-                       Frequency2="3216.0" Feedback="0.75" Mix="0.3899999856948853">
+                       Frequency2="3216.0" Feedback="0.75" Mix="0.0">
               <ChildProcessors>
                 <Processor Type="ModulatorChain" ID="Phase Modulation" Bypassed="0" Intensity="1.0">
                   <ChildProcessors>
