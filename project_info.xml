@@ -4,7 +4,7 @@
   <Name value="Kadabra Grand"/>
   <Version value="1.0.0"/>
   <Description value=""/>
-  <BundleIdentifier value="com.IMI.KadabraPercussion"/>
+  <BundleIdentifier value="com.IMI.KadabraGrand"/>
   <PluginCode value="Kgnd"/>
   <EmbedAudioFiles value="Yes"/>
   <EmbedImageFiles value="Yes"/>
